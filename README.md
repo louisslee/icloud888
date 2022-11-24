@@ -2,15 +2,15 @@
 
 ## 缘起
 
-2021年11月份，中国大陆地区icloud域名由icloud.com迁移至icloud.com.cn。python package pyicloud没有做针对性修改，这就造成了以pyicloud包为依赖的home-assistant icloud集成无法正常使用。
+2021年11月份，中国大陆地区icloud域名由`icloud.com`迁移至`icloud.com.cn`。python package `pyicloud`没有做针对性修改，这就造成了以`pyicloud`包为依赖的home-assistant `icloud集成`无法正常使用。
 
-通过将 pyicloud / base.py 中的domain由icloud.com改为icloud.com.cn，可解决这一问题。但大多数人使用docker容器部署home-assistant，这使得该改动无法持久化，升级home-assistant或重启容器均会导致改动失效。
+通过将 `pyicloud / base.py` 中的domain由`icloud.com`改为`icloud.com.cn`，可解决这一问题。但大多数人使用docker容器部署home-assistant，这使得该改动无法持久化，升级home-assistant或重启容器均会导致改动失效。
 
-故此，就搞了这么个HA自定义集成：把原有icloud集成与pyicloud打包起来，将pyicloud中的icloud访问域名修改为icloud.com.cn，并相应修改了icloud集成的依赖。由于/config目录是持久化的，所以在其中的自定义集成不会随着升级、容器重启而发生改变，这样问题就解决啦。
+故此，就搞了这么个HA自定义集成：把原有`icloud集成`与`pyicloud`打包起来，将`pyicloud`中的icloud访问域名修改为`icloud.com.cn`，并相应修改了icloud集成的依赖。由于/config目录是持久化的，所以在其中的自定义集成不会随着升级、容器重启而发生改变，这样问题就解决啦。
 
 ## 使用方法
 
-首先将本集成拷贝至homeassistant /config/custom_components目录下，推荐方法如下：
+首先将本集成拷贝至homeassistant `/config/custom_components`目录下，推荐方法如下：
 
 ```bash
 cd /config/custom_components

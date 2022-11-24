@@ -14,7 +14,7 @@
 
 ```bash
 cd /config/custom_components
-git clone https://github.com/louisslee/icloud888
+git clone https://github.com/louisslee/icloud888.git
 
 ```
 
